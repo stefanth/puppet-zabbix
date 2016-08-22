@@ -364,6 +364,7 @@ class zabbix::web (
           {
             comment      => 'redirect all to https',
             rewrite_cond => ['%{SERVER_PORT} !^443$'],
+            rewrite_cond => ['%{REQUEST_URI} !^/screens.php$'],
             rewrite_rule => ["^/(.*)$ https://${zabbix_url}/\$1 [L,R]"],
           }
         ],
